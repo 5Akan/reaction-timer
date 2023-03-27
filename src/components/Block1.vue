@@ -1,12 +1,26 @@
 <template>
-  <div class="block">
+  <div class="block" v-if = "showLock">
       Click Me 
   </div>
 </template>
 
 <script>
 export default {
-props:['delay']
+    data(){
+        return {
+            showLock:false
+        }
+    },
+    methods:{},
+props:['delay'],
+// LifeCycle Hook
+mounted(){//Works when the items in template are mountes
+    console.log('Components Mounted');
+    setTimeout(()=>{});
+},
+updated(){
+
+}
 }
 </script>
 
