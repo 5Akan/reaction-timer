@@ -8,25 +8,31 @@
 export default {
     data(){
         return {
-            showBlock:false
+            showBlock:false,
+            timer:null,
+            reactionTime:0
         }
     },
-    methods:{},
 props:['delay'],
 // LifeCycle Hook
-mounted(){//Works when the items in template are mountes
-    console.log('Components Mounted');
+mounted(){//Works when the items in template are mounts
+    
     setTimeout(()=>{
         this.showBlock = true;
+        this.startTimer();
         console.log(this.delay)
     },this.delay);
 },
-updated(){//When mounting occurs. the showBlock is changed to true meaning an update has taken place
-    console.log('Component Updated');
-},
-unmounted(){
-    console.log('Component Unmounted');
-}
+methods:{
+        startTimer(){
+            this.timer = setInterval(()=>{//the method is set to the timer property so it can be cleared in the stopInterval function
+                this.reactionTime +=10;
+            },10)
+        },
+        stopTimer(){
+            clearInterval(this.timer);
+        }   
+         }
 }
 </script>
 
