@@ -1,5 +1,5 @@
 <template>
-  <div class="block" v-if = "showLock">
+  <div class="block" v-if = "showBlock">
       Click Me 
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default {
     data(){
         return {
-            showLock:false
+            showBlock:false
         }
     },
     methods:{},
@@ -16,10 +16,16 @@ props:['delay'],
 // LifeCycle Hook
 mounted(){//Works when the items in template are mountes
     console.log('Components Mounted');
-    setTimeout(()=>{});
+    setTimeout(()=>{
+        this.showBlock = true;
+        console.log(this.delay)
+    },this.delay);
 },
-updated(){
-
+updated(){//When mounting occurs. the showBlock is changed to true meaning an update has taken place
+    console.log('Component Updated');
+},
+unmounted(){
+    console.log('Component Unmounted');
 }
 }
 </script>
