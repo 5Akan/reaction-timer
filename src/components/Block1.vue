@@ -1,5 +1,5 @@
 <template>
-  <div class="block" v-if = "showBlock">
+  <div class="block" v-if = "showBlock" @click = "stopTimer">
       Click Me 
   </div>
 </template>
@@ -15,8 +15,7 @@ export default {
     },
 props:['delay'],
 // LifeCycle Hook
-mounted(){//Works when the items in template are mounts
-    
+mounted(){//When the whole block component is mounted
     setTimeout(()=>{
         this.showBlock = true;
         this.startTimer();
@@ -31,6 +30,7 @@ methods:{
         },
         stopTimer(){
             clearInterval(this.timer);
+            console.log(this.reactionTime);
         }   
          }
 }
