@@ -1,4 +1,5 @@
 <template>
+<!-- Custom Event with Data -->
   <div class="block" v-if = "showBlock" @click = "stopTimer">
       Click Me 
   </div>
@@ -19,7 +20,6 @@ mounted(){//When the whole block component is mounted
     setTimeout(()=>{
         this.showBlock = true;
         this.startTimer();
-        console.log(this.delay)
     },this.delay);
 },
 methods:{
@@ -30,8 +30,8 @@ methods:{
         },
         stopTimer(){
             clearInterval(this.timer);
-            console.log(this.reactionTime);
-        }   
+            this.$emit('end',this.reactionTime); 
+        }
          }
 }
 </script>
